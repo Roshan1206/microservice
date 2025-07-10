@@ -1,0 +1,11 @@
+meta {
+  name: ShutDown
+  type: http
+  seq: 10
+}
+
+post {
+  url: http://localhost:8080/actuator/shutdown
+  body: none
+  auth: none
+}

@@ -1,0 +1,24 @@
+meta {
+  name: UpdateAccountDetails
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:8080/api/update
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "Madan Mohan",
+      "email": "tutor@eazybytes",
+      "mobileNumber": "4354437687",
+      "accountsDto": {
+          "accountNumber": 1105557729,
+          "accountType": "Savings",
+          "branchAddress": "123 Main Street, New York"
+      }
+  }
+}

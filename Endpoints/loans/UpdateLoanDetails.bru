@@ -1,0 +1,22 @@
+meta {
+  name: UpdateLoanDetails
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:8090/api/update
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "mobileNumber": "4354437687",
+      "loanNumber": "10071469799154",
+      "loanType": "Vehicle Loan",
+      "totalLoan": -100000,
+      "amountPaid": -10000,
+      "outstandingAmount": -90000
+  }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Accounts_GET_PermitAll_1
+  type: http
+  seq: 11
+}
+
+get {
+  url: http://localhost:8072/eazybank/accounts/api/fetchCustomerDetails?mobileNumber=4354437688
+  body: none
+  auth: none
+}
+
+params:query {
+  mobileNumber: 4354437688
+}

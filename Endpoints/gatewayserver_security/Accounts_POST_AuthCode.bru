@@ -1,0 +1,38 @@
+meta {
+  name: Accounts_POST_AuthCode
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://localhost:8072/eazybank/accounts/api/create
+  body: json
+  auth: oauth2
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: http://localhost:7080/realms/master/protocol/openid-connect/auth
+  access_token_url: http://localhost:7080/realms/master/protocol/openid-connect/token
+  refresh_token_url: 
+  client_id: eazybank-callcenter-ac
+  client_secret: w0mzY8TPy9ngQcDA4vtu7vZXS1jQWaE2
+  scope: openid email profile
+  state: ew34er-344fgfg-5gfgfg
+  pkce: false
+  credentials_placement: body
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}
+
+body:json {
+  {
+      "name": "Madan Reddy",
+      "email": "tutor@eazybytes",
+      "mobileNumber": "4354437687"
+  }
+}

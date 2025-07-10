@@ -1,0 +1,20 @@
+meta {
+  name: emailsms
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:9010/emailsms
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "accountNumber": 1234545454,
+      "name": "Madan Reddy",
+      "email": "tutor@eazybytes",
+      "mobileNumber": "4354437687"
+  }
+}

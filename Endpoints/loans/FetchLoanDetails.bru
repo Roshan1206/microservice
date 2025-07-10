@@ -1,0 +1,15 @@
+meta {
+  name: FetchLoanDetails
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8090/api/fetch?mobileNumber=4354437687
+  body: none
+  auth: none
+}
+
+params:query {
+  mobileNumber: 4354437687
+}

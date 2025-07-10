@@ -1,0 +1,19 @@
+meta {
+  name: Accounts_POST_NoAuth
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8072/eazybank/accounts/api/create
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "Madan Reddy",
+      "email": "tutor@eazybytes",
+      "mobileNumber": "4354437687"
+  }
+}

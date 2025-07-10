@@ -1,0 +1,22 @@
+meta {
+  name: UpdateCardDetails
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:9000/api/update
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "mobileNumber": "4354437687",
+      "cardNumber": "100107091026",
+      "cardType": "Debit Card",
+      "totalLimit": 100000,
+      "amountUsed": 10000,
+      "availableAmount": 90000
+  }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: FetchCardDetails
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:9000/api/fetch?mobileNumber=4354437687
+  body: none
+  auth: none
+}
+
+params:query {
+  mobileNumber: 4354437687
+}

@@ -1,0 +1,34 @@
+meta {
+  name: LOANS_POST_AuthCode
+  type: http
+  seq: 10
+}
+
+post {
+  url: http://localhost:8072/eazybank/loans/api/create?mobileNumber=4354437687
+  body: none
+  auth: oauth2
+}
+
+params:query {
+  mobileNumber: 4354437687
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: 
+  authorization_url: http://localhost:7080/realms/master/protocol/openid-connect/auth
+  access_token_url: http://localhost:7080/realms/master/protocol/openid-connect/token
+  refresh_token_url: 
+  client_id: eazybank-callcenter-ac
+  client_secret: 6AXs2apKOCVj3Q1d1QGTXOIUk1rylAqP
+  scope: openid email profile
+  state: ew34er-344fgfg-5gfgfg
+  pkce: false
+  credentials_placement: body
+  credentials_id: 
+  token_placement: header
+  token_header_prefix: 
+  auto_fetch_token: true
+  auto_refresh_token: false
+}
