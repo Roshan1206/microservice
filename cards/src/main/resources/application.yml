@@ -16,3 +16,15 @@ spring:
     show-sql: true
 server:
   port: 9000
+
+build:
+  version: "3.0"
+
+cards:
+  message: "Welcome to cards microservice APIs"
+  contactDetails:
+    name: "Roshan - Developer"
+    email: "roshan@microservice.com"
+  onCallSupport:
+    - (555) 555-12234
+    - (555) 523-12345
