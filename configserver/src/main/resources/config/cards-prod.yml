@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+cards:
+  message: "Welcome to cards microservice prod APIs"
+  contactDetails:
+    name: "Roshan - Product"
+    email: "roshan@microservice.com"
+  onCallSupport:
+    - (555) 555-4567
+    - (555) 523-4566

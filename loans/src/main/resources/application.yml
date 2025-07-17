@@ -1,6 +1,6 @@
 spring:
   application:
-    name: loans
+    name: "loans"
   datasource:
     url: jdbc:h2:mem::databaseName
     driverClassName: org.h2.Driver

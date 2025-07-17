@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+loans:
+  message: "Welcome to loans microservice QA APIs"
+  contactDetails:
+    name: "Roshan - QA Lead"
+    email: "roshan@microservice.com"
+  onCallSupport:
+    - (555) 555-7890
+    - (555) 523-7880
