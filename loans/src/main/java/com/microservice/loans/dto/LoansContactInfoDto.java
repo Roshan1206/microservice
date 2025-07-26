@@ -1,4 +1,4 @@
-package com.microservice.cards.dto;
+package com.microservice.loans.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,8 +9,8 @@ import java.util.Map;
 
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "cards")
-public class CardsContactInfoDto {
+@ConfigurationProperties(prefix = "loans")
+public class LoansContactInfoDto {
 
     private String message;
     private Map<String, String> contactDetails;

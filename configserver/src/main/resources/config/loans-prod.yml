@@ -5,7 +5,7 @@ loans:
   message: "Welcome to loans microservice prod APIs"
   contactDetails:
     name: "Roshan - Product"
-    email: "roshan@microservice.com"
+    email: "roshan.prod@microservice.com"
   onCallSupport:
     - (555) 555-4567
     - (555) 523-4566

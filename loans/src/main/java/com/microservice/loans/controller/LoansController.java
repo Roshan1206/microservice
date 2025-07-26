@@ -1,7 +1,7 @@
 package com.microservice.loans.controller;
 
 import com.microservice.loans.dto.ErrorResponseDto;
-import com.microservice.loans.dto.LoansCotactInfoDto;
+import com.microservice.loans.dto.LoansContactInfoDto;
 import com.microservice.loans.dto.LoansDto;
 import com.microservice.loans.service.ILoanService;
 
@@ -43,7 +43,7 @@ public class LoansController {
     private Environment environment;
 
     @Autowired
-    private LoansCotactInfoDto loansCotactInfoDto;
+    private LoansContactInfoDto loansCotactInfoDto;
 
     @Value("${build.version}")
     private String buildVersion;
@@ -111,7 +111,7 @@ public class LoansController {
                     content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
     })
     @GetMapping("/contact-info")
-    public ResponseEntity<LoansCotactInfoDto> getContactInfo(){
+    public ResponseEntity<LoansContactInfoDto> getContactInfo(){
         return ResponseEntity.status(HttpStatus.OK).body(loansCotactInfoDto);
     }
 

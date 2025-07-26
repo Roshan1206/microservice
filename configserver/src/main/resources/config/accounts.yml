@@ -5,7 +5,7 @@ accounts:
   message: "Welcome to accounts microservice APIs"
   contactDetails:
     name: "Roshan - Developer"
-    email: "roshan@microservice.com"
+    email: "roshan.dev@microservice.com"
   onCallSupport:
     - (555) 555-12234
     - (555) 523-12345

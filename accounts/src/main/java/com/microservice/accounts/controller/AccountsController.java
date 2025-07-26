@@ -1,7 +1,7 @@
 package com.microservice.accounts.controller;
 
 import com.microservice.accounts.constants.AccountsConstant;
-import com.microservice.accounts.dto.AccountsCotactInfoDto;
+import com.microservice.accounts.dto.AccountsContactInfoDto;
 import com.microservice.accounts.dto.ErrorResponseDto;
 import com.microservice.accounts.dto.ExistingCustomerDto;
 import com.microservice.accounts.dto.NewCustomerDto;
@@ -15,8 +15,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -48,7 +46,7 @@ public class AccountsController {
     private Environment environment;
 
     @Autowired
-    private AccountsCotactInfoDto accountsCotactInfoDto;
+    private AccountsContactInfoDto accountsCotactInfoDto;
 
     public AccountsController(IAccountsService iAccountsService){
         this.iAccountsService = iAccountsService;
@@ -152,7 +150,7 @@ public class AccountsController {
                     content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
     })
     @GetMapping("/contact-info")
-    public ResponseEntity<AccountsCotactInfoDto> getContactInfo(){
+    public ResponseEntity<AccountsContactInfoDto> getContactInfo(){
         return ResponseEntity.status(HttpStatus.OK).body(accountsCotactInfoDto);
     }
 }
