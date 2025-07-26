@@ -6,6 +6,12 @@
 #docker image push docker.io/username/accounts:v1
 docker image push docker.io/username/${modulename}
 ```
+
+- Build docker images
+  In the root folder run
+``` declarative
+mvn compile jib:dockerBuild
+```
 - start all services using docker
 ``` declarative
 docker compose up -d
