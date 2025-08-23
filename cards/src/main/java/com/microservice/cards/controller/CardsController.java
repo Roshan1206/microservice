@@ -59,7 +59,7 @@ public class CardsController {
 
     @ApiResponse(responseCode = "200", description = "Request processed successfully")
     @GetMapping("/fetch")
-    public ResponseEntity<CardsDto> getCardDetails(
+    public ResponseEntity<CardsDto> fetchCardDetails(
             @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number must be of 10 digits") @RequestParam String mobileNumber) {
         CardsDto card = iCardsService.fetchCard(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK).body(card);

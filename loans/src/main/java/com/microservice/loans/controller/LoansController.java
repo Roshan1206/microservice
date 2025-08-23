@@ -58,7 +58,7 @@ public class LoansController {
 
     @ApiResponse(responseCode = "200", description = "Loan retrieved successfully")
     @GetMapping("/fetch")
-    public ResponseEntity<LoansDto> fetchLoan(
+    public ResponseEntity<LoansDto> fetchLoanDetails(
             @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number must be of 10 digits only") @RequestParam String mobileNumber) {
         LoansDto loan = iLoanService.fetchLoan(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK).body(loan);
