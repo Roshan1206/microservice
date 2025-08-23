@@ -1,5 +1,14 @@
 # Microservice
 
+## Run Locally
+- Run Configserver
+- Run Eurekaserver
+- Run Accounts
+- Run Cards
+- Run Loans
+
+Access Eureka dashboard at http://localhost:8070 and apps details at http://localhost:8070/eureka/apps
+
 ## Commands
 - Push images to docker hub
 ``` declarative
