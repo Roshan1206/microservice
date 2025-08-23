@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.microservice</groupId>
-	<artifactId>eurekaservice</artifactId>
+	<artifactId>eurekaserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>eurekaservice</name>
+	<name>eurekaserver</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
