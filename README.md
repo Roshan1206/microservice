@@ -1,11 +1,13 @@
 # Microservice
 
 ## Run Locally
+Start in given order
 - Run Configserver
 - Run Eurekaserver
 - Run Accounts
 - Run Cards
 - Run Loans
+- Run Gatewayserver
 
 Access Eureka dashboard at http://localhost:8070 and apps details at http://localhost:8070/eureka/apps
 
