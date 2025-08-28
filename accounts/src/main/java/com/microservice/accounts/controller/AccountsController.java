@@ -7,6 +7,7 @@ import com.microservice.accounts.dto.ExistingCustomerDto;
 import com.microservice.accounts.dto.NewCustomerDto;
 import com.microservice.accounts.dto.ResponseDto;
 import com.microservice.accounts.service.IAccountsService;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -125,9 +126,16 @@ public class AccountsController {
             @ApiResponse(responseCode = "500", description = "HTTP Status Internal Server Error",
                     content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
     })
+    @Retry(name = "getBuildInfo", fallbackMethod = "getBuildInfoFallback")
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildInfo(){
         return ResponseEntity.status(HttpStatus.OK).body(buildVersion);
+    }
+
+
+//    fallback method for getBuildInfoFallback. Method signature and arguments should match with 1 extra argument Throwable
+    public ResponseEntity<String> getBuildInfoFallback(Throwable throwable){
+        return ResponseEntity.status(HttpStatus.OK).body("0.9");
     }
 
 

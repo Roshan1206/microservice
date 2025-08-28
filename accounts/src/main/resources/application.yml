@@ -72,10 +72,21 @@ logging:
       microservice:
         accounts: DEBUG
 
-resilience4j.circuitbreaker:
-  configs:
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 2
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+  retry:
     default:
-      slidingWindowSize: 10
-      permittedNumberOfCallsInHalfOpenState: 2
-      failureRateThreshold: 50
-      waitDurationInOpenState: 10000
+      maxAttempts: 3
+      waitDuration: 100
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
+      ignoreExceptions: #retry will not happen for below exceptions
+        - java.lang.NullPointerException
+#      retryExceptions: #retry will happen only for below exceptions
+#        - java.util.concurrent.TimeoutException
