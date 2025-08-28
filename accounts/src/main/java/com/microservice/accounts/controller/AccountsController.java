@@ -47,7 +47,7 @@ public class AccountsController {
     private Environment environment;
 
     @Autowired
-    private AccountsContactInfoDto accountsCotactInfoDto;
+    private AccountsContactInfoDto accountsContactInfoDto;
 
     public AccountsController(IAccountsService iAccountsService){
         this.iAccountsService = iAccountsService;
@@ -159,6 +159,6 @@ public class AccountsController {
     })
     @GetMapping("/contact-info")
     public ResponseEntity<AccountsContactInfoDto> getContactInfo(){
-        return ResponseEntity.status(HttpStatus.OK).body(accountsCotactInfoDto);
+        return ResponseEntity.status(HttpStatus.OK).body(accountsContactInfoDto);
     }
 }
