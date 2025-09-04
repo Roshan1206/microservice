@@ -1,5 +1,8 @@
 server:
   port: 8080
+#  Authserver url
+auth:
+  url: http://localhost:9001
 spring:
   application:
     name: "accounts"
@@ -16,15 +19,35 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
-  profiles:
-    active:
-      - "prod"
+#  profiles:
+#    active:
+#      - "prod"
   config:
     import: "optional:configserver:http://localhost:8071/"
   cloud:
     openfeign:
       circuitbreaker:
         enabled: true
+  security:
+    oauth2:
+#      Validate incoming token
+      resourceserver:
+        jwt:
+          issuer-uri: ${auth.url}
+        opaque-token:
+          introspection-uri: ${auth.url}/oauth2/introspect
+          client-id: accounts-service
+          client-secret: accounts-secret
+      client:
+        registration:
+          accounts-service:
+            client-id: accounts-service
+            client-secret: accounts-secret
+            authorization-grant-type: client_credentials
+            scope: service.read, service.write, internal.api
+        provider:
+          accounts-service:
+            token-uri: ${auth.url}/oauth2/token
 #  rabbitmq:
 #    host: "localhost"
 #    port: 5672

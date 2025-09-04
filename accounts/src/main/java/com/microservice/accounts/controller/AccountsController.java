@@ -41,7 +41,7 @@ public class AccountsController {
 
     private final IAccountsService iAccountsService;
 
-    @Value("${build.version}")
+    @Value("${build.version:1.0}")
     private String buildVersion;
 
     @Autowired

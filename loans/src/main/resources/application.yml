@@ -1,5 +1,7 @@
 server:
   port: 8090
+auth:
+  url: http://localhost:9001
 spring:
   application:
     name: "loans"
@@ -18,6 +20,11 @@ spring:
       - "prod"
   config:
     import: "optional:configserver:http://localhost:8071/"
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${auth.url}
 #  rabbitmq:
 #    host: "localhost"
 #    port: 5672
