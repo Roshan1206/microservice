@@ -26,8 +26,27 @@ spring:
   security:
     oauth2:
       resourceserver:
-        jwt:
-          issuer-uri: ${auth.url}
+        opaque-token:
+          introspection-uri: ${auth.url}/oauth2/introspect
+          client-id: cards-service
+          client-secret: cards-secret
+        client:
+          registration:
+            cards-service:
+              client-id: cards-service
+              client-secret: cards-secret
+              authorization-grant-type: client_credentials
+              scope: service.read, service.write, internal.api
+            opaque-service-client:
+              client-id: secure-service
+              client-secret: secure-secret
+              authorization-grant-type: client_credentials
+              scope: service.read, service.write, internal.api, introspection
+          provider:
+            cards-service:
+              token-uri: ${auth.url}/oauth2/token
+            opaque-service-client:
+              token-uri: ${auth.url}/oauth2/token
 #  rabbitmq:
 #    host: "localhost"
 #    port: 5672

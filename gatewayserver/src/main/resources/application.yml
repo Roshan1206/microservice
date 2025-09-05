@@ -19,8 +19,27 @@ spring:
   security:
     oauth:
       resourceserver:
-        jwt:
-          issuer-uri: ${auth.uri}
+        opaque-token:
+          introspection-uri: ${auth.url}/oauth2/introspect
+          client-id: gateway-service
+          client-secret: gateway-secret
+      client:
+        registration:
+          gateway-service:
+            client-id: gateway-service
+            client-secret: gateway-secret
+            authorization-grant-type: client_credentials
+            scope: service.read, service.write, internal.api
+          opaque-token-service:
+            client-id: secure-service
+            client-secret: secure-secret
+            authorization-grant-type: client_credentials
+            scope: service.read,service.write, internal.api, introspection
+        providers:
+          gateway-service:
+            token-uri: ${auth.url}/oauth2/introspection
+          opaque-token-service:
+            token-uri: ${auth.url}/oauth2/introspection
 #  data:
 #    redis:
 #      connect-timeout: 2s

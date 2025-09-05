@@ -32,8 +32,6 @@ spring:
     oauth2:
 #      Validate incoming token
       resourceserver:
-        jwt:
-          issuer-uri: ${auth.url}
         opaque-token:
           introspection-uri: ${auth.url}/oauth2/introspect
           client-id: accounts-service
@@ -45,8 +43,15 @@ spring:
             client-secret: accounts-secret
             authorization-grant-type: client_credentials
             scope: service.read, service.write, internal.api
+          opaque-service-client:
+            client-id: secure-service
+            client-secret: secure-secret
+            authorization-grant-type: client_credentials
+            scope: service.read, service.write, internal.api, introspection
         provider:
           accounts-service:
+            token-uri: ${auth.url}/oauth2/token
+          opaque-service-client:
             token-uri: ${auth.url}/oauth2/token
 #  rabbitmq:
 #    host: "localhost"
