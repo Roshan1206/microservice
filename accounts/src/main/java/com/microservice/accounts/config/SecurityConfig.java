@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.support.BasicAuthenticationInterceptor;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -23,19 +24,20 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/actuator/health", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                        .requestMatchers("/actuator/**", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth -> oauth
-                        .opaqueToken(opaque -> opaque.introspector(opaqueTokenIntrospector())))
+                        .opaqueToken(Customizer.withDefaults()))
+//                                opaque -> opaque.introspector(opaqueTokenIntrospector())))
                 .csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
 
 
-    @Bean
-    public OpaqueTokenIntrospector opaqueTokenIntrospector(){
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getInterceptors().add(new BasicAuthenticationInterceptor("secure-service", "secure-secret"));
-        return new SpringOpaqueTokenIntrospector(authUrl + "/oauth2/introspect", restTemplate);
-    }
+//    @Bean
+//    public OpaqueTokenIntrospector opaqueTokenIntrospector(){
+//        RestTemplate restTemplate = new RestTemplate();
+//        restTemplate.getInterceptors().add(new BasicAuthenticationInterceptor("accounts-service", "accounts-secret"));
+//        return new SpringOpaqueTokenIntrospector(authUrl + "/oauth2/introspect", restTemplate);
+//    }
 }

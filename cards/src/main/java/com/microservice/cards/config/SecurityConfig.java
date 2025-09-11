@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.support.BasicAuthenticationInterceptor;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -25,17 +26,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/actuator/health", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
                         .anyRequest().authenticated())
-                .oauth2ResourceServer(oauth -> oauth
-                        .opaqueToken(opaque -> opaque.introspector(opaqueTokenIntrospector())))
+                .oauth2ResourceServer(oauth2 -> oauth2
+                        .opaqueToken(Customizer.withDefaults()))
                 .csrf(AbstractHttpConfigurer::disable);
         return http.build();
-    }
-
-
-    @Bean
-    public OpaqueTokenIntrospector opaqueTokenIntrospector() {
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getInterceptors().add(new BasicAuthenticationInterceptor("secure-service", "secure-secret"));
-        return new SpringOpaqueTokenIntrospector(authUrl + "/oauth2/introspect", restTemplate);
     }
 }

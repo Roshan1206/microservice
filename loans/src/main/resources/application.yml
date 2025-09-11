@@ -25,15 +25,15 @@ spring:
       resourceserver:
         opaque-token:
           introspection-uri: ${auth.url}/oauth2/introspect
-          client-id: accounts-service
-          client-secret: accounts-secret
+          client-id: loans-service
+          client-secret: loans-secret
         client:
           registration:
             loans-service:
               client-id: loans-service
               client-secret: loans-secret
               authorization-grant-type: client_credentials
-              scope: service.read, service.write, internal.api
+              scope: service.read, service.write, internal.api, introspection
             opaque-service-client:
               client-id: secure-service
               client-secret: secure-secret
