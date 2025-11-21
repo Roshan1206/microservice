@@ -14,9 +14,14 @@ spring:
           group: ${spring.application.name}
         emailsms-out-O:
           destination: communication-sent
-  rabbitmq:
-    host: localhost
-    port: 5762
-    username: guest
-    password: guest
-    connection-timeout: 10s
+      kafka:
+        binder:
+          brokers:
+            - localhost:9092 #kafka url
+#for rabbitmq msg service
+#  rabbitmq:
+#    host: localhost
+#    port: 5762
+#    username: guest
+#    password: guest
+#    connection-timeout: 10s
